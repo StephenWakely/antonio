@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: io.argonaut/argonaut_2.11:6.0.4">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/argonaut/argonaut_2.11/6.0.4/argonaut_2.11-6.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

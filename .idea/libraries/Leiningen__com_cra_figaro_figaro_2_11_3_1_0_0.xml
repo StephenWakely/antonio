@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: com.cra.figaro/figaro_2.11:3.1.0.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/cra/figaro/figaro_2.11/3.1.0.0/figaro_2.11-3.1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
