@@ -1,6 +1,6 @@
 (ns figaro-clj.core-test
   (:require [clojure.test :refer :all]
-            [figaro-clj.core :refer :all]
+            [figaro-clj.language :refer :all]
             [figaro-clj.elements :refer :all]
             [figaro-clj.algorithms :refer :all]))
 
@@ -39,13 +39,30 @@
                         [0.8 (Flip 0.2)]])]
     (is (float= (VariableElimination goodMood true) 0.28 0.001))))
 
+(defn monthQuality
+  []
+  (let [sunnyDaysInMonth (Binomial 30 0.2)]
+    (Apply sunnyDaysInMonth #(cond (> % 10) "good"
+                                   (> % 5) "average"
+                                   :else "poor"))))
+
 (deftest apply-test
   []
-  (let [sunnyDaysInMonth (Binomial 30 0.2)
-        monthQuality (Apply sunnyDaysInMonth #(cond (> % 10) "good"
-                                                    (> % 5) "average"
-                                                    :else "poor"))]
-    (is (float= (VariableElimination monthQuality "good") 0.025616 0.01))))
+  (is (float= (VariableElimination (monthQuality) "good") 0.025616 0.01)))
 
+(deftest chain-test
+  []
+  (let [sunnyToday (Flip 0.2)
+        goodMood (Chain (monthQuality) sunnyToday
+                        (fn [quality sunny]
+                          (if sunny
+                            (cond (= quality "good") (Flip 0.9)
+                                  (= quality "average") (Flip 0.7)
+                                  :else (Flip 0.4))
+                            (cond (= quality "good") (Flip 0.6)
+                                  (= quality "average") (Flip 0.3)
+                                  :else (Flip 0.05)))))]
+    ;; TODO: Check - text says this should be 0.2896316752495942
+    (is (float= (VariableElimination goodMood true) 0.276 0.001))))
 
 

@@ -19,7 +19,7 @@
        (.probability ~(symbol (str figarofn "$/MODULE$"))
                      ~@(map second gparams)))))
 
-(defmacro defapply
+(defmacro defapply*
   [figarofn & params]
   (let [gparams (gen-params params)]
     `(defn ~figarofn
@@ -27,3 +27,17 @@
        (.apply ~(symbol (str figarofn "$/MODULE$"))
                ~@(map second gparams)
                *name* *universe*))))
+
+(defn overload-defn
+  [figarofn params]
+  (let [gparams (gen-params params)]
+    `([~@(map first gparams)]
+      (.apply ~(symbol (str figarofn "$/MODULE$"))
+              ~@(map second gparams)
+              *name* *universe*))))
+
+(defmacro defapply
+  [figarofn & params]
+  `(defn ~figarofn
+     ~@(map (partial overload-defn figarofn) params)))
+

@@ -8,7 +8,7 @@
   (:import (com.cra.figaro.library.atomic.continuous Normal$ Uniform$)
            (com.cra.figaro.library.atomic.discrete Binomial$)))
 
-(defapply Normal (double %) (double %))
-(defapply Uniform (double %) (double %))
+(defapply Normal [(double %) (double %)])
+(defapply Uniform [(double %) (double %)])
 
-(defapply Binomial % (double %))
+(defapply Binomial [% (double %)])
