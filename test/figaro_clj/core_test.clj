@@ -2,6 +2,7 @@
   (:require [clojure.test :refer :all]
             [figaro-clj.language :refer :all]
             [figaro-clj.elements :refer :all]
+            [figaro-clj.element :refer :all]
             [figaro-clj.algorithms :refer :all]))
 
 
@@ -66,3 +67,17 @@
     (is (float= (VariableElimination goodMood true) 0.276 0.001))))
 
 
+(deftest condition-test
+  []
+  (let [sunnyDaysInMonth (Binomial 30 0.2)
+        monthQuality (Apply sunnyDaysInMonth
+                            #(cond (> % 10) "good"
+                                   (> % 5) "average"
+                                   :else "poor"))
+        goodMood (Chain monthQuality
+                        #(cond (= % "good") (Flip 0.9)
+                               (= % "average") (Flip 0.6)
+                               :else (Flip 0.1)))]
+    (is (float= (VariableElimination goodMood true) 0.393928 0.001))
+    (setCondition sunnyDaysInMonth #(> % 8))
+    (is (float= (VariableElimination goodMood true) 0.65973 0.001))))

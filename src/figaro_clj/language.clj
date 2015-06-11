@@ -32,11 +32,6 @@
 (defapply Chain
   [% ($/fn [a] (% a))]
   [% % ($/fn [a b] (% a b))])
-
-(defn observe
-  [element value]
-  (.observe element value))
-
 (defn testme
   []
   (reduce (fn [possession idx]

@@ -1,7 +1,5 @@
 (ns figaro-clj.elements
-  (:require [clojure.reflect :as r]
-            [clojure.pprint :as pp]
-            [t6.from-scala.core :refer [$ $$] :as $]
+  (:require [t6.from-scala.core :refer [$ $$] :as $]
             [t6.from-scala.utils :as scala]
             [figaro-clj.macros :refer [defapply]]
             [figaro-clj.defaults :refer [*name* *universe*]])
@@ -12,3 +10,4 @@
 (defapply Uniform [(double %) (double %)])
 
 (defapply Binomial [% (double %)])
+

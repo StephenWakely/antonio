@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Leiningen: net.sf.jsci/jsci:1.2">
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/net/sf/jsci/jsci/1.2/jsci-1.2.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

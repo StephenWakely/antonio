@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Leiningen: t6/from-scala:0.3.0-20150312.083007-1">
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/t6/from-scala/0.3.0-SNAPSHOT/from-scala-0.3.0-SNAPSHOT.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
