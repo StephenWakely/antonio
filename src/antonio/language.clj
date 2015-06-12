@@ -1,7 +1,5 @@
 (ns antonio.language
-  (:require [clojure.reflect :as r]
-            [clojure.pprint :as pp]
-            [t6.from-scala.core :refer [$ $$] :as $]
+  (:require [t6.from-scala.core :refer [$ $$] :as $]
             [t6.from-scala.utils :as scala]
             [antonio.defaults :refer [*name* *universe*]]
             [antonio.macros :refer [defapply]])
@@ -32,11 +30,3 @@
 (defapply Chain
   [% ($/fn [a] (% a))]
   [% % ($/fn [a b] (% a b))])
-(defn testme
-  []
-  (reduce (fn [possession idx]
-            (conj possession (If (possession (dec idx))
-                                  (Flip 0.6)
-                                  (Flip 0.3))))
-          [(Flip 0.5)]
-          (range 1 90)))
