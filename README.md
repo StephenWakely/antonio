@@ -1,13 +1,6 @@
-# figoro-clj
+# antonio
+Clojure wrappers for Figaro Probabilistic Programming
 
-A Clojure library designed to ... well, that part is up to you.
+Initial work in progress - still lots to do (including documentation).
 
-## Usage
 
-FIXME
-
-## License
-
-Copyright © 2015 FIXME
-
-Distributed under the Eclipse Public License, the same as Clojure.
