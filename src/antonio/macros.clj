@@ -1,6 +1,6 @@
-(ns figaro-clj.macros
+(ns antonio.macros
   (:require [clojure.walk :refer [prewalk-replace]]
-            [figaro-clj.defaults :refer [*name* *universe*]]))
+            [antonio.defaults :refer [*name* *universe*]]))
 
 
 (defn gen-params

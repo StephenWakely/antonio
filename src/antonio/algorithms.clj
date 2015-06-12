@@ -1,6 +1,6 @@
-(ns figaro-clj.algorithms
+(ns antonio.algorithms
   (:require [t6.from-scala.core :refer [$ $$] :as $]
-            [figaro-clj.macros :refer [defprobability]])
+            [antonio.macros :refer [defprobability]])
   (:import (com.cra.figaro.algorithm.factored VariableElimination$)
            (com.cra.figaro.algorithm.sampling Importance$)))
 

@@ -1,9 +1,9 @@
-(ns figaro-clj.core-test
+(ns antonio.core-test
   (:require [clojure.test :refer :all]
-            [figaro-clj.language :refer :all]
-            [figaro-clj.elements :refer :all]
-            [figaro-clj.element :refer :all]
-            [figaro-clj.algorithms :refer :all]))
+            [antonio.language :refer :all]
+            [antonio.elements :refer :all]
+            [antonio.element :refer :all]
+            [antonio.algorithms :refer :all]))
 
 
 ;; http://gettingclojure.wikidot.com/cookbook:numbers

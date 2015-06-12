@@ -1,6 +1,6 @@
-(defproject figaro-clj "0.1.0-SNAPSHOT"
+(defproject antonio "0.1.0-SNAPSHOT"
   :description "Clojure wrapper for Figaro"
-  :url "http://example.com/FIXME"
+  :url "http://github.com/fungushumungus/antonio"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]

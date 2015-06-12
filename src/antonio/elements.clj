@@ -1,8 +1,8 @@
-(ns figaro-clj.elements
+(ns antonio.elements
   (:require [t6.from-scala.core :refer [$ $$] :as $]
             [t6.from-scala.utils :as scala]
-            [figaro-clj.macros :refer [defapply]]
-            [figaro-clj.defaults :refer [*name* *universe*]])
+            [antonio.macros :refer [defapply]]
+            [antonio.defaults :refer [*name* *universe*]])
   (:import (com.cra.figaro.library.atomic.continuous Normal$ Uniform$)
            (com.cra.figaro.library.atomic.discrete Binomial$)))
 

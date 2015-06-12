@@ -1,4 +1,4 @@
-(ns figaro-clj.element
+(ns antonio.element
   (:require [t6.from-scala.core :refer [$ $$] :as $])
   (:import (scala.collection.immutable List)))
 

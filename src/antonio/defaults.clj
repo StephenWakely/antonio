@@ -1,4 +1,4 @@
-(ns figaro-clj.defaults
+(ns antonio.defaults
   (:import (com.cra.figaro.language Universe$ Name$)))
 
 (def ^:dynamic *universe* (.universe Universe$/MODULE$))

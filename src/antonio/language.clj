@@ -1,10 +1,10 @@
-(ns figaro-clj.language
+(ns antonio.language
   (:require [clojure.reflect :as r]
             [clojure.pprint :as pp]
             [t6.from-scala.core :refer [$ $$] :as $]
             [t6.from-scala.utils :as scala]
-            [figaro-clj.defaults :refer [*name* *universe*]]
-            [figaro-clj.macros :refer [defapply]])
+            [antonio.defaults :refer [*name* *universe*]]
+            [antonio.macros :refer [defapply]])
   (:import (com.cra.figaro.language Flip$ Select$ Universe$ Name$ Constant$ Chain$ Dist$ Apply$)
            (com.cra.figaro.library.compound If$)))
 
