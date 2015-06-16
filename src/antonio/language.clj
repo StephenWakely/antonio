@@ -3,14 +3,22 @@
             [t6.from-scala.utils :as scala]
             [antonio.defaults :refer [*name* *universe*]]
             [antonio.macros :refer [defapply]])
-  (:import (com.cra.figaro.language Flip$ Select$ Universe$ Name$ Constant$ Chain$ Dist$ Apply$)
+  (:import (com.cra.figaro.language Flip$ Select$ Universe$ Name$ Constant$
+                                    NonCachingChain$ CachingChain$ Chain$ Dist$ Apply$)
            (com.cra.figaro.library.compound If$)))
 
 
-(defapply Flip [%])
+(defapply Flip [(if (number? %) (double %) %)])
 (defapply Constant [%])
 (defapply If [% ($/fn [] %) ($/fn [] %)])
+
 (defapply Chain [% ($/fn [] %)])
+(defapply NonCachingChain
+  [% ($/fn [a] (% a))]
+  [% % ($/fn [a b] (% a b))] )
+(defapply CachingChain
+  [% ($/fn [a] (% a))]
+  [% % ($/fn [a b] (% a b))] )
 
 (defapply Dist
   [(apply scala/immutable-list
@@ -30,3 +38,5 @@
 (defapply Chain
   [% ($/fn [a] (% a))]
   [% % ($/fn [a b] (% a b))])
+
+(def Universe Universe$/MODULE$)
