@@ -2,6 +2,7 @@
   (:require [speclj.core :refer :all]
             [antonio.macros :refer :all]
             [antonio.language :refer :all]
+            [antonio.element :refer :all]
             [antonio.library.atomic.continuous :refer :all]
             [antonio.equals :refer :all]))
 
@@ -22,12 +23,11 @@
               (.createNew Universe)
               (let [e (Constant 5)]
                 (.generate e)
-                (should= (.value e) 5)))
+                (should= 5.0 (.value e))))
 
           (it "should convert to the correct string"
               (.createNew Universe)
-              (should= (.toString (Constant 5))
-                         "Constant(5)")))
+              (should= "Constant(5.0)" (.toString (Constant 5)))))
 
 
 (describe "A Flip with constant weight"
@@ -214,5 +214,15 @@
                 (.generate a)
                 (should= 6.8 (.value a)))))
 
+(describe "An Inject"
+          (it "should have value equal to the sequence of values of its arguments"
+              (.createNew Universe)
+              (let [u1 (Uniform 0 2)
+                    u2 (Constant 1.5)
+                    i (Inject [u1 u2])]
+                (.set u1 1.3)
+                (.set u2 1.5)
+                (.generate i)
+                (should= (value i) [1.3 1.5]))))
 
 (run-specs)
