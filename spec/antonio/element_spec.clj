@@ -225,4 +225,21 @@
                 (.generate i)
                 (should= (value i) [1.3 1.5]))))
 
+(describe "A Select with constant probabilities"
+          (it "should have a value with its associated"
+              (.createNew Universe)
+              (sampleTest (Select [[0.2 1]
+                                   [0.3 2]
+                                   [0.5 3]])
+                          #(> % 1)
+                          0.8)))
+
+(describe "A Select with variable probabilities"
+          (it "should have a value with probability proportional to its associated probability element's value"
+              (.createNew Universe)
+              (let [c1 (Constant 0.2)
+                    c2 (Constant 0.4)
+                    d (Select [[c1 false]
+                               [c2 true]])]
+                (sampleTest d identity (/ 0.4 0.6)))))
 (run-specs)

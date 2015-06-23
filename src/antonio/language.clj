@@ -27,7 +27,9 @@
 
 (defapply Select
   [(apply scala/immutable-list
-          (map (fn [[prob outcome]] ($/tuple (Constant prob) outcome)) %))])
+          (map (fn [[prob outcome]]
+                 ($/tuple (if (number? prob) (Constant prob) prob)
+                          outcome)) %))])
 
 (defapply Apply
   [% ($/fn [a] (% a))]
