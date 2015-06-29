@@ -23,13 +23,13 @@
 
 (defapply Dist
   [(apply scala/immutable-list
-          (map (fn [[prob outcome]] ($/tuple (double prob) outcome)) %))])
+          (map (fn [[prob outcome]]
+                 ($/tuple (if (number? prob) (double prob) prob) outcome)) %))])
 
 (defapply Select
   [(apply scala/immutable-list
           (map (fn [[prob outcome]]
-                 ($/tuple (if (number? prob) (Constant prob) prob)
-                          outcome)) %))])
+                 ($/tuple (if (number? prob) (Constant prob) prob) outcome)) %))])
 
 (defapply Apply
   [% ($/fn [a] (% a))]

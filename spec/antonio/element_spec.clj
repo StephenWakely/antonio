@@ -242,4 +242,30 @@
                     d (Select [[c1 false]
                                [c2 true]])]
                 (sampleTest d identity (/ 0.4 0.6)))))
+
+(describe "A Dist with constant probabilities"
+          (it "should have the value of an outcome with its associated probability"
+              (.createNew Universe)
+              (let [f (Flip 0.6)
+                    c (Constant true)
+                    d (Dist [[0.3 f]
+                             [0.7 c]])]
+                (.set f false)
+                (sampleTest d identity 0.7))))
+
+(describe "A Dist with variable probabilities"
+          ;; This needs fixing.
+          ;; Currently cannot get it to call the correct overload on Dist that
+          ;; takes a seq of Elements. The seq of double overload is always called.
+          (xit "should have tho value of an outcome with probability proportional to its associated probability element's value"
+              (.createNew Universe)
+              (let [f2 (Flip 0.5)
+                    c1 (Constant 0.2)
+                    c2 (Constant 0.4)
+                    c3 (Constant true)
+                    d (Dist [[c1 f2]
+                             [c2 c3]])]
+                (.set f2 false)
+                (sampleTest d identity (/ 0.4 0.6)))))
+
 (run-specs)
