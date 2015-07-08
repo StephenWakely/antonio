@@ -20,21 +20,30 @@
 (defmacro defprobability
   [figarofn & params]
   (let [gparams (gen-params params)]
-    `(defn ~figarofn
+    `(defn ~(symbol (str figarofn "_prob"))
        [~@(map first gparams)]
        (.probability ~(symbol (str figarofn "$/MODULE$"))
                      ~@(map second gparams)))))
 
 (defn overload-defn
-  [figarofn params]
+  "Creates the overloaded component of the generated function."
+  [figarofn defaults params]
   (let [gparams (gen-params params)]
     `([~@(map first gparams)]
       (.apply ~(symbol (str figarofn "$/MODULE$"))
               ~@(map second gparams)
-              *name* *universe*))))
+              ~@defaults))))
 
 (defmacro defapply
   [figarofn & params]
   `(defn ~figarofn
-     ~@(map (partial overload-defn figarofn) params)))
+     ~@(map (partial overload-defn figarofn '(*name* *universe*)) params)))
+
+
+(defmacro defalgorithm
+  "Creates the method to call apply on Figaro algorithm functions.
+  Algorithm functions only take a universe default param."
+  [figarofn & params]
+  `(defn ~figarofn
+     ~@(map (partial overload-defn figarofn '(*universe*)) params)))
 
