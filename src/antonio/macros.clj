@@ -37,7 +37,7 @@
 (defmacro defapply
   [figarofn & params]
   `(defn ~figarofn
-     ~@(map (partial overload-defn figarofn '(*name* *universe*)) params)))
+     ~@(map (partial overload-defn figarofn '(*name* (*universe*))) params)))
 
 
 (defmacro defalgorithm
@@ -45,5 +45,5 @@
   Algorithm functions only take a universe default param."
   [figarofn & params]
   `(defn ~figarofn
-     ~@(map (partial overload-defn figarofn '(*universe*)) params)))
+     ~@(map (partial overload-defn figarofn '((*universe*))) params)))
 

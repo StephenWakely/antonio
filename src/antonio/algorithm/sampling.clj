@@ -10,7 +10,7 @@
   "Creates a proposal scheme with the element parameters.
   Pass no parameters to use the default scheme."
   ([]
-   (.default ProposalScheme$/MODULE$ *universe*))
+   (.default ProposalScheme$/MODULE$ (*universe*)))
   ([& elements]
    (.apply ProposalScheme$/MODULE$ (apply scala/immutable-list elements))))
 
